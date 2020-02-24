@@ -18,7 +18,7 @@ spec:
             claimName: database-persistent-volume-claim
       containers:
         - name: postgres
-          image: postgres:9.5.18
+          image: postgres:latest
           ports:
             - containerPort: 5432
           volumeMounts:
@@ -26,7 +26,7 @@ spec:
               mountPath: /var/lib/postgresql/data # which folder in container should be mounted to volume
               subPath: postgres # which folder in volume let will map the data in container
           env:
-            - name: PGPASSWORD
+            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: pgpassword
